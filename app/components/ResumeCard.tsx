@@ -3,7 +3,7 @@ import ScoreCircle from './ScoreCircle';
 
 const ResumeCard = ({ resume: { id, companyName, jobTitle, feedback,imagePath } }: { resume: Resume }) => {
     return (
-        <Link to='/resume/${resume.id}' className='resume-card animate-in fade-in duration-1000'>
+    <Link to={`/resume/${id}`} className="resume-card animate-in fade-in duration-1000 max-w-[320px] w-full p-5">
             <div className="resume-card-header">
                 <div className="flex flex-col gap-2">
                     <h2 className='text-black font-bold break-words'>{companyName}</h2>
@@ -15,12 +15,11 @@ const ResumeCard = ({ resume: { id, companyName, jobTitle, feedback,imagePath } 
             </div>
             <div className="gradient-border animate-in fade-in duration-1000">
                 <div className="w-full h-full">
-                <img src={imagePath}
-                alt="resume" 
-                className="w-full h-[350px] max-sm:h[200px] object-cover object-top"/>
+                    <img src={imagePath}
+                        alt="resume"
+                        className="w-full h-[180px] sm:h-[180px] md:h-[220px] xl:h-[260px] object-cover object-top rounded-xl" />
                 </div>
             </div>
-
         </Link>
     )
 }

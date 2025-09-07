@@ -1,8 +1,10 @@
 import { resumes } from "~/constants";
 import type { Route } from "./+types/home";
 import Navbar from "~/components/Navbar";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import ResumeCard from "~/components/ResumeCard";
+import { usePuterStore } from "~/lib/puter";
+import { useNavigate } from "react-router";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -12,11 +14,18 @@ export function meta({ }: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const { auth } = usePuterStore();
+  const navigate = useNavigate();
+
+    useEffect(() => {
+        if (auth.isAuthenticated) navigate('/auth?next=/');
+    }, [auth.isAuthenticated])
+
   function callbackfn(value: Resume, index: number, array: Resume[]): ReactNode {
     throw new Error("Function not implemented.");
   }
 
-  return <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+  return <main className="bg-[url('/images/bg-main.svg')] bg-cover flex flex-col items-center w-full min-h-screen">
     <Navbar />
     <section className="main-section py-16">
       <div className="page-heading">
@@ -24,7 +33,7 @@ export default function Home() {
         <h2>Review your submissions and Check AI-Powered feedback.</h2>
       </div>
       {resumes.length > 0 && (
-        <div className="resumes-section">
+  <div className="resumes-section flex flex-wrap gap-6 items-start justify-center w-full max-w-4xl px-2 md:px-8 mx-auto">
           {resumes.map((resume) => (
             <ResumeCard key={resume.id} resume={resume} />
           ))}
