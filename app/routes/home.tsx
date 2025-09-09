@@ -17,9 +17,9 @@ export default function Home() {
   const { auth } = usePuterStore();
   const navigate = useNavigate();
 
-    useEffect(() => {
-        if (auth.isAuthenticated) navigate('/auth?next=/');
-    }, [auth.isAuthenticated])
+  useEffect(() => {
+    if (!auth.isAuthenticated) navigate('/auth?next=/');
+  }, [auth.isAuthenticated])
 
   function callbackfn(value: Resume, index: number, array: Resume[]): ReactNode {
     throw new Error("Function not implemented.");
