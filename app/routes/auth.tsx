@@ -1,3 +1,4 @@
+// ...existing code...
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { usePuterStore } from "~/lib/puter";

@@ -1,6 +1,6 @@
 import {useState, useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
-// import { formatSize } from '../lib/utils'
+import { formatSize } from '../lib/utils'
 
 interface FileUploaderProps {
     onFileSelect?: (file: File | null) => void;
@@ -40,9 +40,9 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
                                     <p className="text-sm font-medium text-gray-700 truncate max-w-xs">
                                         {file.name}
                                     </p>
-                                    {/* <p className="text-sm text-gray-500">
+                                    <p className="text-sm text-gray-500">
                                         {formatSize(file.size)}
-                                    </p> */}
+                                    </p>
                                 </div>
                             </div>
                             <button className="p-2 cursor-pointer" onClick={(e) => {
@@ -61,7 +61,7 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
                                     Click to upload
                                 </span> or drag and drop
                             </p>
-                            {/* <p className="text-lg text-gray-500">PDF (max {formatSize(maxFileSize)})</p> */}
+                            <p className="text-lg text-gray-500">PDF (max {formatSize(maxFileSize)})</p>
                         </div>
                     )}
                 </div>
